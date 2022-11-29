@@ -28,6 +28,8 @@ import com.vaadin.addon.leaflet4vaadin.layer.vectors.PathOptions;
  * 
  * @author <strong>Gabor Kokeny</strong> Email:
  *         <a href='mailto=kokeny19@gmail.com'>kokeny19@gmail.com</a>
+ *         <strong>Extended by Sami Viitanen</strong> Email:
+ *         <a href='mailto=sami.viitanen@gmail.com'>sami.viitanen@gmail.com</a>
  * @since 2020-05-25
  * @version 1.0
  * @see MarkerClusterGroup
@@ -58,6 +60,8 @@ public class MarkerClusterOptions implements Serializable {
     private int chunkInterval = 200;
     private int chunkDelay = 50;
     private PathOptions polygonOptions;
+
+    private String iconCreateFunctionString;
 
     public int getMaxClusterRadius() {
         return maxClusterRadius;
@@ -185,6 +189,25 @@ public class MarkerClusterOptions implements Serializable {
 
     public void setPolygonOptions(PathOptions polygonOptions) {
         this.polygonOptions = polygonOptions;
+    }
+
+    /**
+     * Get current icon create function Javascript as a string
+     * @return
+     */
+    public String getIconCreateFunctionString() {
+        return iconCreateFunctionString;
+    }
+
+    /**
+     * Define icon create function to be used to generate icons (or other
+     * dynamic content like theming).
+     * @param jsString Javascript function as a string (will be evaluated on
+     *                 the browser side into JS function instance, eg.
+     *                 <code>(function(cluster) { return L.divIcon({ html: '<div>Something</div>'}); }/code>
+     */
+    public void setIconCreateFunctionString(String jsString) {
+        iconCreateFunctionString = jsString;
     }
 
 }

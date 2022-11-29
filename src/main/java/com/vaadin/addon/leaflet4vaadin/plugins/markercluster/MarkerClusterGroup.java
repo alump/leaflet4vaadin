@@ -188,5 +188,9 @@ public class MarkerClusterGroup extends FeatureGroup {
     public PathOptions getPolygonOptions() {
         return options.getPolygonOptions();
     }
+
+    public String getIconCreateFunctionString() {
+        return options.getIconCreateFunctionString();
+    }
     
 }

@@ -118,7 +118,17 @@ class LeafletMap extends ThemableMixin(PolymerElement) {
     leafletArgs = leafletArgs.map((arg) =>
       this.leafletConverter.convert(arg, this)
     );
-    //console.log("LeafletMap - callLeafletFunction() - leafletArgs", leafletArgs);
+    console.log("LeafletMap - callLeafletFunction() - leafletArgs", leafletArgs);
+    leafletArgs.forEach(arg => {
+      if (arg.options && arg.options.iconCreateFunctionString) {
+        try {
+          arg.options.iconCreateFunction = eval(arg.options.iconCreateFunctionString);
+        } catch (e) {
+          console.error('Failed to evaluate iconCreateFunction');
+          console.error(e);
+        }
+      }
+    });
 
     let leafletFn = target[operation.functionName];
     //console.log("LeafletMap - callLeafletFunction() - leafletFn", leafletFn);
