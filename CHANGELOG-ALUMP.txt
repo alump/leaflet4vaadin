@@ -1,7 +1,7 @@
 This file contains additions made by sami.viitanen@gmail.com top of original
 add-on made by kokeny19@gmail.com (https://github.com/Gubancs/leaflet4vaadin)
 
-0.5.1-alump (WIP)
+0.5.1-alump
 
 - Add support to allow server side to define iconCreateFunction needed to
   provide more dynamic content to marker groups based on children mapped into
