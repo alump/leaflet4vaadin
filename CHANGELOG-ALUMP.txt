@@ -1,6 +1,10 @@
 This file contains additions made by sami.viitanen@gmail.com top of original
 add-on made by kokeny19@gmail.com (https://github.com/Gubancs/leaflet4vaadin)
 
+0.5.1-alump3
+
+- Commment out logging calls
+- Rebuild to get proper jar file (need to be build with directory profile)
 
 0.5.1-alump2
 

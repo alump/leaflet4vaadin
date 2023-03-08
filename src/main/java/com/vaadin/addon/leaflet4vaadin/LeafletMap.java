@@ -411,8 +411,8 @@ public final class LeafletMap extends PolymerTemplate<LeafletModel> implements M
      * @see LeafletEvent
      */
     private void fireEvent(Layer layer, LeafletEvent event) {
-        logger.info("Leaflet event fired on client side: {}", event.getType());
-        logger.info("Event data: {}", event);
+        //logger.info("Leaflet event fired on client side: {}", event.getType());
+        //logger.info("Event data: {}", event);
         layer.fireEvent(event);
     }
 
@@ -438,7 +438,7 @@ public final class LeafletMap extends PolymerTemplate<LeafletModel> implements M
      *            the layer to add
      */
     public void addLayer(Layer layer) {
-        logger.debug("add layer: {}", layer);
+        //logger.debug("add layer: {}", layer);
         this.mapLayer.addLayer(layer);
         executeJs("addLayer", layer);
     }
@@ -450,7 +450,7 @@ public final class LeafletMap extends PolymerTemplate<LeafletModel> implements M
      *            the layer to remove
      */
     public void removeLayer(Layer layer) {
-        logger.debug("remove layer: {}", layer.getUuid());
+        //logger.debug("remove layer: {}", layer.getUuid());
         this.mapLayer.removeLayer(layer);
         executeJs("removeLayer", layer);
     }
@@ -496,7 +496,7 @@ public final class LeafletMap extends PolymerTemplate<LeafletModel> implements M
      */
     @EventHandler
     private void onMapReadyEventHandler() {
-        logger.info("Leaflet map gets initialized on client side.");
+        //logger.info("Leaflet map gets initialized on client side.");
         this.ready = true;
         fireEvent(new MapReadyEvent(this));
     }
@@ -513,7 +513,7 @@ public final class LeafletMap extends PolymerTemplate<LeafletModel> implements M
 
     @Override
     public void executeJs(Identifiable target, String functionName, Serializable... arguments) {
-        logger.info("Execute leaflet function: {}", functionName);
+        //logger.info("Execute leaflet function: {}", functionName);
         LeafletOperation leafletOperation = new LeafletOperation(target, functionName, arguments);
         getElement().callJsFunction("callLeafletFunction", JsonSerializer.toJson(leafletOperation));
     }
@@ -521,7 +521,7 @@ public final class LeafletMap extends PolymerTemplate<LeafletModel> implements M
     @Override
     public <T extends Serializable> CompletableFuture<T> call(Identifiable target, String functionName, Class<T> resultType, Serializable... arguments) {
         if (ready) {
-            logger.info("Call leaflet function: {}", functionName);
+            //logger.info("Call leaflet function: {}", functionName);
             LeafletOperation leafletOperation = new LeafletOperation(target, functionName, arguments);
             PendingJavaScriptResult javascriptResult = getElement().callJsFunction("callLeafletFunction", JsonSerializer.toJson(leafletOperation));
 
